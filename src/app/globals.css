@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
+/* ==== Light Mode ==== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --background: #ffffff;       /* พื้นหลังขาว */
+  --foreground: #1a1a1a;       /* ข้อความหลักสีเข้ม */
+  --primary-green: #4caf50;    /* สีเขียว TCAS */
+  --secondary-yellow: #ffeb3b; /* สีเหลือง TCAS */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* ==== Dark Mode ==== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a1a0a;       /* พื้นหลังเขียวเข้ม */
+    --foreground: #f0f0f0;       /* ข้อความสว่าง */
+    --primary-green: #66bb6a;    /* สีเขียวสว่างสำหรับ dark mode */
+    --secondary-yellow: #fff176; /* สีเหลืองสว่างสำหรับ dark mode */
   }
 }
 
+/* ==== Global Body Styles ==== */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* ==== Headings ==== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  color: var(--primary-green);
+}
+
+/* ==== Links & Buttons ==== */
+a, button {
+  transition: all 0.3s ease;
+}
+
+a {
+  color: var(--primary-green);
+}
+
+a:hover {
+  color: var(--secondary-yellow);
+}
+
+/* ==== Additional Tailwind Overrides ==== */
+@layer base {
+  h1 { @apply text-3xl font-bold; }
+  h2 { @apply text-2xl font-semibold; }
+  h3 { @apply text-xl font-medium; }
 }
